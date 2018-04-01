@@ -1,0 +1,6 @@
+---
+# A list of PKI certitifcate paths, relative to the ansible root dir
+pki_certificates: []
+
+# A list of PKI keys, relative to the ansible root dir.
+pki_keys: []

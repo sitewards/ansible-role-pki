@@ -1,0 +1,20 @@
+---
+# Adds PKI key pairs from a specified location
+
+- name: "Copy the certificates upstream"
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/ssl/certs/{{ item | basename }}"
+    owner: "root"
+    group: "root"
+    mode: "u=rw,g=r,o=r"
+  with_items: "{{ pki_certificates }}"
+
+- name: "Copy the key upstream"
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/ssl/private/{{ item | basename }}"
+    owner: "root"
+    group: "root"
+    mode: "u=r,g=,o="
+  with_items: "{{ pki_keys }}"
